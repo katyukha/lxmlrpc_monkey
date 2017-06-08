@@ -2,3 +2,6 @@
 *.sw[pno]
 mprofile*
 test_data*
+build/
+dist/
+lxmlrpc_monkey.egg-info/
