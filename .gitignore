@@ -1,0 +1,4 @@
+*.py[cow]
+*.sw[pno]
+mprofile*
+test_data*
