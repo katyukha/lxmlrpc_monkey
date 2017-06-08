@@ -26,6 +26,16 @@ import lxmlrpc
 patch_xmlrpclib()
 ``` 
 
+Benchmarks (how to run)
+-----------------------
+
+To run benchmarks:
+
+1. install [memory_profiler](https://pypi.python.org/pypi/memory_profiler)
+2. prepare data with ``python generate_data.py --path <demo data path> --size 50000000``
+3. run benchmarks with ``python benchmark.py --path <demo data path>``
+
+
 
 Benchmark results (50 Mb (real 65 Mb) data file)
 ===================================
