@@ -4,7 +4,7 @@ from memory_profiler import profile
 import argparse
 import xmlrpclib
 
-import lxmlrpc
+import lxmlrpc_monkey
 
 
 loads = profile(xmlrpclib.loads)
@@ -14,7 +14,7 @@ def bench_load(xmldata):
     print ("Running unpatched loads")
     loads(xmldata)
 
-    lxmlrpc.patch_xmlrpclib()
+    lxmlrpc_monkey.patch_xmlrpclib()
 
     print ("Running patched loads")
     loads(xmldata)
