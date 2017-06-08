@@ -1,7 +1,7 @@
 lxmlrpc - XMLRPClib patch
 =========================
 
-This module monkeypatch python's `xmlrpclib` to use [lxml](http://lxml.de/) based parser
+This module monkeypatch python's `xmlrpclib` to use `lxml <http://lxml.de>`__ based parser
 to reduce memory consumption on big xmlrpc requests / responses (100+ Mb)
 
 
@@ -31,14 +31,14 @@ Benchmarks (how to run)
 
 To run benchmarks:
 
-1. install [memory_profiler](https://pypi.python.org/pypi/memory_profiler)
+1. install `memory_profiler <https://pypi.python.org/pypi/memory_profiler>`__
 2. prepare data with ``python generate_data.py --path <demo data path> --size 50000000``
 3. run benchmarks with ``python benchmark.py --path <demo data path>``
 
 
 
 Benchmark results (50 Mb (real 65 Mb) data file)
-===================================
+================================================
 
 look at ```p.feed(data)``` call in ```loads``` function of *xmlrpclib*
 
