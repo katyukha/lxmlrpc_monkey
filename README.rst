@@ -15,16 +15,15 @@ Use it **only** if you suffer from **high memory usage** by **xmlrpclib**
 Usage
 -----
 
-To use this module just do following:
+To use this module just do following
 
-```python
+.. code:: python
 
-import xmlrpclib
-import lxmlrpc
+    import xmlrpclib
+    import lxmlrpc
+    # This line will monkey-patch xmlrpclib to use lxml for parser
+    patch_xmlrpclib()
 
-# This line will monkey-patch xmlrpclib to use lxml for parser
-patch_xmlrpclib()
-``` 
 
 Benchmarks (how to run)
 -----------------------
@@ -43,10 +42,12 @@ Benchmark results (50 Mb (real 65 Mb) data file)
 look at ```p.feed(data)``` call in ```loads``` function of *xmlrpclib*
 
 ***Running unpatched loads***
+
 Filename: /usr/lib/python2.7/xmlrpclib.py
 
+======    =========    =========   =============
 Line #    Mem usage    Increment   Line Contents
-------------------------------------------------
+======    =========    =========   =============
   1134    104.7 MiB      0.0 MiB   def loads(data, use_datetime=0):
   1135                                 """data -> unmarshalled data, method name
   1136                             
@@ -57,16 +58,19 @@ Line #    Mem usage    Increment   Line Contents
   1141                                 raises a Fault exception.
   1142                                 """
   1143    104.7 MiB      0.0 MiB       p, u = getparser(use_datetime=use_datetime)
-->1144    622.4 MiB    517.7 MiB       p.feed(data)
+ >1144    622.4 MiB    517.7 MiB       p.feed(data)
   1145    558.0 MiB    -64.4 MiB       p.close()
   1146    558.0 MiB      0.0 MiB       return u.close(), u.getmethodname()
+======    =========    =========   =============
 
 
 ***Running patched loads***
+
 Filename: /usr/lib/python2.7/xmlrpclib.py
 
+======    =========    =========   =============
 Line #    Mem usage    Increment   Line Contents
-------------------------------------------------
+======    =========    =========   =============
   1134    106.9 MiB      0.0 MiB   def loads(data, use_datetime=0):
   1135                                 """data -> unmarshalled data, method name
   1136                             
@@ -77,15 +81,17 @@ Line #    Mem usage    Increment   Line Contents
   1141                                 raises a Fault exception.
   1142                                 """
   1143    106.9 MiB      0.0 MiB       p, u = getparser(use_datetime=use_datetime)
-->1144    235.9 MiB    129.0 MiB       p.feed(data)
+ >1144    235.9 MiB    129.0 MiB       p.feed(data)
   1145    171.5 MiB    -64.4 MiB       p.close()
   1146    171.5 MiB      0.0 MiB       return u.close(), u.getmethodname()
+======    =========    =========   =============
 
 
 Filename: bechmark.py
 
+======    =========    =========   =============
 Line #    Mem usage    Increment   Line Contents
-------------------------------------------------
+======    =========    =========   =============
     13    104.7 MiB      0.0 MiB   @profile
     14                             def bench_load(xmldata):
     15    104.7 MiB      0.0 MiB       print ("Running unpatched loads")
@@ -95,6 +101,7 @@ Line #    Mem usage    Increment   Line Contents
     19                             
     20    106.9 MiB      0.0 MiB       print ("Running patched loads")
     21    107.1 MiB      0.2 MiB       loads(xmldata)
+======    =========    =========   =============
 
 
 
@@ -107,8 +114,9 @@ Benchmark results (100 Mb (real 129 Mb) data file)
 
 Filename: /usr/lib/python2.7/xmlrpclib.py
 
+======   ==========   ==========   =============
 Line #    Mem usage    Increment   Line Contents
-------------------------------------------------
+======   ==========   ==========   =============
   1134    169.2 MiB      0.0 MiB   def loads(data, use_datetime=0):
   1135                                 """data -> unmarshalled data, method name
   1136                             
@@ -119,10 +127,10 @@ Line #    Mem usage    Increment   Line Contents
   1141                                 raises a Fault exception.
   1142                                 """
   1143    169.2 MiB      0.0 MiB       p, u = getparser(use_datetime=use_datetime)
-->1144   1203.0 MiB   1033.8 MiB       p.feed(data)
+ >1144   1203.0 MiB   1033.8 MiB       p.feed(data)
   1145   1074.2 MiB   -128.8 MiB       p.close()
   1146   1074.2 MiB      0.0 MiB       return u.close(), u.getmethodname()
-
+======   ==========   ==========   =============
 
 ***Running patched loads***
 
@@ -130,8 +138,9 @@ Line #    Mem usage    Increment   Line Contents
 
 Filename: /usr/lib/python2.7/xmlrpclib.py
 
+======   ==========   ==========   =============
 Line #    Mem usage    Increment   Line Contents
-------------------------------------------------
+======   ==========   ==========   =============
   1134    171.6 MiB      0.0 MiB   def loads(data, use_datetime=0):
   1135                                 """data -> unmarshalled data, method name
   1136                             
@@ -142,15 +151,16 @@ Line #    Mem usage    Increment   Line Contents
   1141                                 raises a Fault exception.
   1142                                 """
   1143    171.6 MiB      0.0 MiB       p, u = getparser(use_datetime=use_datetime)
-->1144    429.4 MiB    257.8 MiB       p.feed(data)
+ >1144    429.4 MiB    257.8 MiB       p.feed(data)
   1145    300.6 MiB   -128.8 MiB       p.close()
   1146    300.6 MiB      0.0 MiB       return u.close(), u.getmethodname()
-
+======   ==========   ==========   =============
 
 Filename: bechmark.py
 
+======   ==========   ==========   =============
 Line #    Mem usage    Increment   Line Contents
-------------------------------------------------
+======   ==========   ==========   =============
     13    169.2 MiB      0.0 MiB   @profile
     14                             def bench_load(xmldata):
     15    169.2 MiB      0.0 MiB       print ("Running unpatched loads")
@@ -160,4 +170,5 @@ Line #    Mem usage    Increment   Line Contents
     19                             
     20    171.6 MiB      0.0 MiB       print ("Running patched loads")
     21    171.8 MiB      0.2 MiB       loads(xmldata)
+======   ==========   ==========   =============
 

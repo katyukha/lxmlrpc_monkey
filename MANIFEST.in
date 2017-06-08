@@ -1,3 +1,3 @@
-include README.md LICENSE lxmlrpc_monkey.py
+include README.rst LICENSE lxmlrpc_monkey.py
 global-exclude *.swp *.swo *.swn mprofile* test_data*
 

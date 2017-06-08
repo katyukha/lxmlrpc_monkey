@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import setup
 
-_doc = open('README.md', 'rt').read()
+_doc = open('README.rst', 'rt').read()
 
 setup(
     name='lxmlrpc_monkey',
