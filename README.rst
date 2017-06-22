@@ -16,7 +16,7 @@ Use it **only** if you suffer from **high memory consumption** of **xmlrpclib**
 Install
 -------
 
-This module is hosted on `PyPI <https://pypi.python.org/pypi/lxmlrpc_monkey`__
+This module is hosted on `PyPI <https://pypi.python.org/pypi/lxmlrpc_monkey>`__
 so it could be easily installed via *pip*:
 
 .. code:: bash
@@ -32,7 +32,7 @@ To use this module just do following
 .. code:: python
 
     import xmlrpclib
-    import lxmlrpc
+    from lxmlrpc_monkey import patch_xmlrpclib
     # This line will monkey-patch xmlrpclib to use lxml for parser
     patch_xmlrpclib()
 

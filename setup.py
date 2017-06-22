@@ -26,5 +26,5 @@ setup(
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    keywords=['xmlrpc', 'xmlrpclib'],
+    keywords=['xmlrpc', 'xmlrpclib', 'xml-rpc'],
 )
