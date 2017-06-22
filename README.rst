@@ -9,7 +9,19 @@ NOTE
 ----
 
 This module is useful only for ***python2.7***.
-Use it **only** if you suffer from **high memory usage** by **xmlrpclib**
+
+Use it **only** if you suffer from **high memory consumption** of **xmlrpclib**
+
+
+Install
+-------
+
+This module is hosted on `PyPI <https://pypi.python.org/pypi/lxmlrpc_monkey`__
+so it could be easily installed via *pip*:
+
+.. code:: bash
+
+    pip install lxmlrpc_monkey
 
 
 Usage
